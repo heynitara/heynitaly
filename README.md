@@ -34,3 +34,7 @@ Kamu juga bisa mengganti nama, harga, emoji, deskripsi, dan produk langsung di b
 
 ## Promo
 Bagian promo sudah tersedia di halaman utama. Edit teks, harga, dan produk promo di `index.html` jika ingin mengganti penawaran.
+
+
+## Favicon 🎀
+File `favicon.svg` adalah favicon custom HeyNitara dengan inisial HN, nuansa pink-cream, dan ornamen hati agar selaras dengan identitas website.

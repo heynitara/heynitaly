@@ -1,160 +1,175 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="HeyNitara — makanan lezat low budget dan barang aesthetic lucu.">
-  <title>HeyNitara — Little Things, Big Happiness</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HeyNitara — toko makanan aesthetic dengan sentuhan cute pink & cream.">
+  <title>HeyNitara — Cute Food & Sweet Things</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="shortcut icon" href="favicon.svg">
-  <meta name="theme-color" content="#f39abd">
+  <meta name="theme-color" content="#e9a1b5">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="topbar">♡ Cute finds, tasty bites & happy prices — welcome to HeyNitara!</div>
+  <div class="announcement">♡ Freshly made with love · Order today & make your day sweeter ♡</div>
 
-  <header class="header">
-    <div class="nav container">
-      <a class="brand" href="#home"><span>Hey</span>Nitara<span class="brand-dot">.</span></a>
-      <nav>
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#promo">Promo</a>
-        <a href="#shop">Shop</a>
-        <a href="#faq">FAQ</a>
-      </nav>
-      <div class="nav-tools">
-        <button id="searchOpen" class="tool" aria-label="Search">⌕</button>
-        <select id="lang" aria-label="Language"><option value="id">ID</option><option value="en">EN</option></select>
-        <button id="cartOpen" class="cart">♡ <span id="count">0</span></button>
-        <button id="mobileMenu" class="tool mobile">☰</button>
-      </div>
-    </div>
-    <div id="searchBox" class="searchbox">
-      <div class="container searchline">
-        <input id="search" type="search" placeholder="Cari makanan atau barang aesthetic...">
-        <button id="searchClose">×</button>
-      </div>
-    </div>
+  <header class="navbar">
+    <a class="brand" href="#home" aria-label="HeyNitara home">
+      <span class="brand-mark">H</span>
+      <span><b>Hey</b>Nitara<small>sweet little bites</small></span>
+    </a>
+    <button class="menu-toggle" aria-label="Buka menu">☰</button>
+    <nav class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#menu">Menu</a>
+      <a href="#promo">Promo</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <button class="cart-btn" id="cartBtn">🛒 Cart <span id="cartCount">0</span></button>
+    </nav>
   </header>
 
-  <main>
-    <section class="hero container" id="home">
-      <div class="hero-text">
-        <div class="eyebrow">♡ LITTLE SHOP, BIG HAPPINESS</div>
-        <h1>Temukan hal kecil<br>yang bikin <em>bahagia.</em></h1>
-        <p>Makanan lezat yang ramah di kantong dan barang aesthetic pilihan untuk menemani hari-harimu.</p>
+  <main id="home">
+    <section class="promo-banner">
+      <div class="promo-badge">LIMITED OFFER ♡</div>
+      <div>
+        <span>🎀 PROMO HARI INI</span>
+        <h2>Buy 2, <em>Save More!</em></h2>
+        <p>Diskon spesial untuk pembelian 2 menu pilihan. Bikin ngemil makin happy!</p>
+      </div>
+      <div class="promo-code"><small>CODE PROMO</small><b>HEY20</b><button onclick="copyPromo()">Salin</button></div>
+    </section>
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">♡ cute food, happy mood ♡</span>
+        <h1>Little treats,<br><em>big happiness.</em></h1>
+        <p>Temukan camilan manis, minuman segar, dan makanan aesthetic favoritmu di HeyNitara.</p>
         <div class="hero-actions">
-          <a class="button primary" href="#shop">Belanja sekarang ↗</a>
-          <a class="simple-link" href="#about">Kenalan dengan HeyNitara! →</a>
+          <a class="btn primary" href="#menu">Lihat Menu →</a>
+          <a class="btn ghost" href="#about">Tentang Kami</a>
         </div>
-        <div class="stats">
-          <div><b>100+</b><span>pilihan produk</span></div>
-          <div><b>4.9/5</b><span>customer love</span></div>
-          <div><b>♡</b><span>made with love</span></div>
+        <div class="mini-stats">
+          <span><b>100%</b><small>made with love</small></span>
+          <span><b>♡</b><small>cute & yummy</small></span>
+          <span><b>Fresh</b><small>every order</small></span>
         </div>
       </div>
-      <div class="hero-art">
-        <div class="soft-blob pink-blob"></div>
-        <div class="soft-blob blue-blob"></div>
-        <div class="hero-photo main-photo">
-          <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=900&q=85" alt="Donat">
-          <div class="photo-label">sweet<br><strong>& lovely ♡</strong></div>
+      <div class="hero-art" aria-label="Ilustrasi makanan">
+        <div class="blob"></div>
+        <div class="spark s1">✦</div><div class="spark s2">♡</div><div class="spark s3">✦</div>
+        <div class="cake">
+          <div class="cake-top">🍓</div>
+          <div class="cake-body"><span>🍰</span></div>
+          <div class="plate"></div>
         </div>
-        <div class="hero-photo mini-photo">
-          <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=500&q=85" alt="Barang aesthetic">
-        </div>
-        <span class="spark s-one">✦</span><span class="spark s-two">♡</span>
+        <div class="sticker">so<br>sweet!</div>
       </div>
     </section>
 
-    <div class="category-bar">
-      <div class="container categories">
-        <button class="category active" data-filter="all">✿ All</button>
-        <button class="category" data-filter="food">🍰 Food</button>
-        <button class="category" data-filter="drink">🧋 Drinks</button>
-        <button class="category" data-filter="aesthetic">🎀 Aesthetic</button>
-        <button class="category" data-filter="gift">🎁 Gifts</button>
-      </div>
-    </div>
+    <section class="categories">
+      <div><span>🍰</span><b>Sweet Bites</b><small>Manis & gemas</small></div>
+      <div><span>🥐</span><b>Bakery</b><small>Freshly baked</small></div>
+      <div><span>🧋</span><b>Drinks</b><small>Segar & creamy</small></div>
+      <div><span>🍪</span><b>Snacks</b><small>Cemilan favorit</small></div>
+    </section>
 
-    <section class="section container" id="promo">
-      <div class="section-head">
-        <div><div class="eyebrow">TODAY'S LITTLE TREAT</div><h2>Promo pilihan</h2></div>
-        <p>hemat lebih banyak, happy lebih lama ♡</p>
+    <section class="deals" id="promo">
+      <div class="section-heading">
+        <div><span class="eyebrow">special deals</span><h2>Promo <em>manis</em> buat kamu</h2></div>
+        <p>Jangan sampai kelewatan. Promo bisa kamu sesuaikan kapan saja.</p>
       </div>
-      <div class="promo-grid">
-        <article class="promo pink"><div><small>BEST DEAL</small><h3>Sweet Treat<br>Weekend</h3><p>Diskon spesial untuk camilan favoritmu.</p><a href="#shop">Lihat promo →</a></div><b>🍓</b></article>
-        <article class="promo blue"><div><small>AESTHETIC PICK</small><h3>Pretty Things<br>Under 50K</h3><p>Barang lucu tanpa bikin dompet sedih.</p><a href="#shop">Shop now →</a></div><b>🎀</b></article>
+      <div class="deal-grid">
+        <article class="deal-card pink">
+          <span class="deal-icon">🍓</span>
+          <div><small>WEEKEND DEAL</small><h3>Strawberry Duo</h3><p>2 Strawberry Shortcake lebih hemat.</p><b>Rp50.000</b> <del>Rp56.000</del></div>
+          <button class="btn mini" onclick="addPromo(1,2)">Ambil Promo →</button>
+        </article>
+        <article class="deal-card cream">
+          <span class="deal-icon">🍪</span>
+          <div><small>SNACK TIME</small><h3>Sweet Snack Set</h3><p>Cookie + cupcake + donut dalam satu paket.</p><b>Rp42.000</b> <del>Rp48.000</del></div>
+          <button class="btn mini" onclick="addPromoSet()">Ambil Promo →</button>
+        </article>
+        <article class="deal-card dark">
+          <span class="deal-icon">🎁</span>
+          <div><small>GIFT PROMO</small><h3>Sweet Box</h3><p>Hadiah cute untuk diri sendiri atau orang tersayang.</p><b>Rp65.000</b> <del>Rp75.000</del></div>
+          <button class="btn mini light" onclick="addSweetBox()">Ambil Promo →</button>
+        </article>
       </div>
     </section>
 
-    <section class="section container" id="shop">
-      <div class="section-head">
-        <div><div class="eyebrow">OUR FAVORITES</div><h2>Yang lagi disuka</h2></div>
-        <span>little favorites ♡</span>
+    <section class="menu-section" id="menu">
+      <div class="section-heading">
+        <div><span class="eyebrow">our favorites</span><h2>Menu paling <em>gemas</em></h2></div>
+        <p>Dipilih khusus untuk menemani hari-hari manismu.</p>
       </div>
-      <div id="products" class="products"></div>
-      <p id="empty" class="empty">Produk tidak ditemukan ♡</p>
+      <div class="filters">
+        <button class="filter active" data-filter="all">All</button>
+        <button class="filter" data-filter="sweet">Sweet</button>
+        <button class="filter" data-filter="bakery">Bakery</button>
+        <button class="filter" data-filter="drink">Drinks</button>
+        <button class="filter" data-filter="snack">Snacks</button>
+      </div>
+      <div class="product-grid" id="productGrid"></div>
+    </section>
+
+    <section class="promo">
+      <div class="promo-copy">
+        <span class="eyebrow">special for you ♡</span>
+        <h2>Sweet box untuk<br><em>orang tersayang.</em></h2>
+        <p>Isi 4 pilihan snack favorit. Cocok untuk hadiah, self-reward, atau sekadar bilang “aku sayang kamu”.</p>
+        <button class="btn primary" id="promoBtn">Pesan Sweet Box</button>
+      </div>
+      <div class="promo-visual"><div class="gift">🎁</div><span>sweet<br>box</span></div>
     </section>
 
     <section class="about" id="about">
-      <div class="container about-grid">
-        <div class="about-image">
-          <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1000&q=85" alt="Kopi dan makanan">
-          <div class="round-badge">made with<br><b>♡ love</b></div>
-        </div>
-        <div>
-          <div class="eyebrow">A LITTLE STORY</div>
-          <h2>Hi, we're<br><em>HeyNitara!</em></h2>
-          <p>Tempat kecil untuk kamu yang suka makanan enak, harga bersahabat, dan barang-barang aesthetic yang bikin hari terasa lebih manis.</p>
-          <p>Kami percaya belanja tidak harus mahal untuk terasa spesial. Pilih yang kamu suka, masukkan ke keranjang, lalu checkout dengan mudah.</p>
-          <a class="button dark" href="#shop">Explore our shop ↗</a>
-        </div>
+      <div class="about-card">
+        <span class="eyebrow">hello from heynitara</span>
+        <h2>Made to be <em>loved.</em></h2>
+        <p>HeyNitara adalah toko kecil yang percaya bahwa makanan bukan cuma soal rasa—tampilannya juga bisa bikin hati ikut senang. Kami membuat pilihan makanan cute dan aesthetic untuk menemani momen kecilmu.</p>
+        <div class="values"><span>♡ Cute</span><span>♡ Fresh</span><span>♡ Affordable</span></div>
       </div>
     </section>
 
-    <section class="section container" id="faq">
-      <div class="faq-title">
-        <div class="eyebrow">NEED TO KNOW</div><h2>Frequently asked</h2>
+    <section class="contact" id="contact">
+      <div>
+        <span class="eyebrow">let's be friends!</span>
+        <h2>Punya pertanyaan atau<br><em>mau custom order?</em></h2>
       </div>
-      <div class="faq">
-        <details><summary>Bagaimana cara memesan? <span>+</span></summary><p>Pilih produk dan tambahkan ke keranjang. Setelah itu klik checkout untuk mengirim pesanan melalui WhatsApp.</p></details>
-        <details><summary>Apakah bisa dikirim? <span>+</span></summary><p>Bisa. Detail pengiriman dapat dikonfirmasi melalui WhatsApp sesuai lokasi dan jenis produk.</p></details>
-        <details><summary>Ada promo setiap minggu? <span>+</span></summary><p>Ada promo pilihan yang akan ditampilkan di halaman ini. Pantau terus HeyNitara! ♡</p></details>
-      </div>
-    </section>
-
-    <section class="newsletter">
-      <div class="container newsletter-inner">
-        <div><div class="eyebrow">STAY IN THE LOOP</div><h2>Dapatkan kabar manis dari kami.</h2></div>
-        <form id="news"><input type="email" placeholder="email kamu..." required><button>Join ♡</button></form>
+      <div class="contact-box">
+        <p>Hubungi HeyNitara lewat WhatsApp untuk cek stok, harga terbaru, dan pemesanan.</p>
+        <a class="btn primary" href="https://wa.me/6280000000000?text=Halo%20HeyNitara%2C%20saya%20mau%20order%20%F0%9F%8E%80" target="_blank" rel="noopener">Chat WhatsApp ↗</a>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="container footer-grid">
-      <div><a class="brand footer-brand" href="#home"><span>Hey</span>Nitara<span class="brand-dot">.</span></a><p>Good food. Cute things.<br>Little happiness every day.</p></div>
-      <div><h4>Explore</h4><a href="#about">About</a><a href="#promo">Promo</a><a href="#shop">Shop</a><a href="#faq">FAQ</a></div>
-      <div><h4>Social</h4><a href="#">Instagram</a><a href="#">TikTok</a><a href="https://wa.me/62895393044401">WhatsApp</a></div>
-      <div><h4>Let's talk</h4><a href="https://wa.me/62895393044401">+62 895-3930-44401</a><p>Senang membantu ♡</p></div>
-    </div>
-    <div class="container copyright">© 2026 HeyNitara · made for little joys.</div>
+    <div class="footer-brand"><span class="brand-mark">H</span><b>HeyNitara</b><small>sweet little bites</small></div>
+    <p>© 2026 HeyNitara. Made with ♡</p>
+    <div class="socials"><a href="#contact">Instagram</a><a href="#contact">WhatsApp</a></div>
   </footer>
 
-  <a class="wa" href="https://wa.me/62895393044401?text=Halo%20kak%20aku%20mau%20pesan%20roti%20....%205%20pack%20ya%3B" target="_blank" rel="noopener"><strong>☏</strong><span>Chat with us</span></a>
-
-  <div id="overlay" class="overlay"></div>
-  <aside id="drawer" class="drawer">
-    <div class="drawer-head"><h3>Your Bag ♡</h3><button id="cartClose">×</button></div>
-    <div id="cartItems" class="cart-items"><p class="cart-empty">Keranjangmu masih kosong ♡</p></div>
-    <div class="drawer-foot"><div><span>Total</span><strong id="total">Rp0</strong></div><a id="checkout" class="button primary" target="_blank" rel="noopener">Checkout via WhatsApp ↗</a></div>
-  </aside>
+  <div class="cart-overlay" id="cartOverlay">
+    <aside class="cart">
+      <button class="close" id="closeCart">×</button>
+      <span class="eyebrow">your little basket</span>
+      <h2>Shopping Cart 🛒</h2>
+      <div id="cartItems" class="cart-items"></div>
+      <div class="cart-total"><span>Total</span><strong id="cartTotal">Rp0</strong></div>
+      <button class="btn primary full" id="checkoutBtn">Checkout via WhatsApp ↗</button>
+      <p class="cart-note">Harga dan stok dapat disesuaikan di file <b>script.js</b>.</p>
+    </aside>
+  </div>
 
   <script src="script.js"></script>
+  <script>
+    function copyPromo(){
+      navigator.clipboard?.writeText("HEY20");
+      alert("Kode promo HEY20 berhasil disalin ♡");
+    }
+  </script>
 </body>
 </html>
