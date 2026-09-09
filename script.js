@@ -1,63 +1,26 @@
-const products = [
-  {id:1,name:"Strawberry Shortcake",cat:"sweet",emoji:"🍓",price:28000,tag:"Best Seller",desc:"Lembut, creamy, strawberry."},
-  {id:2,name:"Pink Croissant",cat:"bakery",emoji:"🥐",price:22000,tag:"Fresh",desc:"Butter croissant yang flaky."},
-  {id:3,name:"Berry Milk",cat:"drink",emoji:"🧋",price:18000,tag:"Cute Pick",desc:"Creamy berry milk yang segar."},
-  {id:4,name:"Choco Cookie",cat:"snack",emoji:"🍪",price:15000,tag:"Yummy",desc:"Cookies cokelat crunchy."},
-  {id:5,name:"Mini Cupcake",cat:"sweet",emoji:"🧁",price:16000,tag:"Sweet",desc:"Cupcake mini dengan frosting."},
-  {id:6,name:"Cream Donut",cat:"bakery",emoji:"🍩",price:17000,tag:"Favorite",desc:"Donat lembut isi cream."},
-  {id:7,name:"Peach Soda",cat:"drink",emoji:"🍑",price:14000,tag:"Fresh",desc:"Soda peach manis dan sparkling."},
-  {id:8,name:"Macaron Box",cat:"sweet",emoji:"🍬",price:32000,tag:"Gift",desc:"Macaron warna pastel pilihan."}
-];
-
-let cart = JSON.parse(localStorage.getItem("heynitaraCart") || "[]");
-const rupiah = n => "Rp" + n.toLocaleString("id-ID");
-const grid = document.getElementById("productGrid");
-
-function renderProducts(filter="all"){
-  grid.innerHTML = products.map(p => `
-    <article class="product ${filter!=="all" && p.cat!==filter ? "hidden":""}">
-      <div class="product-pic"><span class="tag">${p.tag}</span><span>${p.emoji}</span></div>
-      <div class="product-info">
-        <h3>${p.name}</h3><p>${p.desc}</p>
-        <div class="price-row"><span class="price">${rupiah(p.price)}</span>
-        <button class="add" aria-label="Tambah ${p.name}" onclick="addToCart(${p.id})">+</button></div>
-      </div>
-    </article>`).join("");
-}
-function addToCart(id){
-  const p=products.find(x=>x.id===id), item=cart.find(x=>x.id===id);
-  item ? item.qty++ : cart.push({id,qty:1});
-  saveCart(); openCart();
-}
-function removeFromCart(id){
-  cart=cart.filter(x=>x.id!==id); saveCart(); renderCart();
-}
-function saveCart(){localStorage.setItem("heynitaraCart",JSON.stringify(cart)); renderCart();}
-function renderCart(){
-  const box=document.getElementById("cartItems");
-  if(!cart.length) box.innerHTML=`<div style="text-align:center;padding:35px 10px;color:#9b8580">Keranjangmu masih kosong ♡<br>Yuk pilih makanan yang gemas!</div>`;
-  else box.innerHTML=cart.map(i=>{const p=products.find(x=>x.id===i.id);return `<div class="cart-item"><span class="emoji">${p.emoji}</span><div class="cart-item-info"><b>${p.name}</b><small>${i.qty} × ${rupiah(p.price)}</small></div><button class="remove" onclick="removeFromCart(${p.id})">×</button></div>`}).join("");
-  const total=cart.reduce((s,i)=>s+products.find(p=>p.id===i.id).price*i.qty,0);
-  document.getElementById("cartTotal").textContent=rupiah(total);
-  document.getElementById("cartCount").textContent=cart.reduce((s,i)=>s+i.qty,0);
-}
-function openCart(){document.getElementById("cartOverlay").classList.add("open")}
-function closeCart(){document.getElementById("cartOverlay").classList.remove("open")}
-document.querySelectorAll(".filter").forEach(btn=>btn.addEventListener("click",()=>{document.querySelectorAll(".filter").forEach(x=>x.classList.remove("active"));btn.classList.add("active");renderProducts(btn.dataset.filter)}));
-document.getElementById("cartBtn").addEventListener("click",openCart);
-document.getElementById("closeCart").addEventListener("click",closeCart);
-document.getElementById("cartOverlay").addEventListener("click",e=>{if(e.target.id==="cartOverlay")closeCart()});
-document.querySelector(".menu-toggle").addEventListener("click",()=>document.querySelector(".nav-links").classList.toggle("open"));
-document.querySelectorAll(".nav-links a").forEach(a=>a.addEventListener("click",()=>document.querySelector(".nav-links").classList.remove("open")));
-document.getElementById("promoBtn").addEventListener("click",()=>{addToCart(1);addToCart(4);addToCart(5);openCart()});
-document.getElementById("checkoutBtn").addEventListener("click",()=>{
-  if(!cart.length){alert("Keranjang masih kosong ♡");return}
-  const lines=cart.map(i=>{const p=products.find(x=>x.id===i.id);return `• ${p.name} x${i.qty} = ${rupiah(p.price*i.qty)}`}).join("%0A");
-  const total=cart.reduce((s,i)=>s+products.find(p=>p.id===i.id).price*i.qty,0);
-  window.open(`https://wa.me/6280000000000?text=Halo%20HeyNitara%20%F0%9F%8E%80%0ASaya%20mau%20order%3A%0A${lines}%0A%0ATotal%3A%20${rupiah(total)}%0A%0ANama%3A%20`, "_blank");
-});
-renderProducts();renderCart();
-
-function addPromo(id,qty){for(let n=0;n<qty;n++)addToCart(id);openCart();}
-function addPromoSet(){addToCart(4);addToCart(5);addToCart(6);openCart();}
-function addSweetBox(){addToCart(1);addToCart(4);addToCart(5);addToCart(7);openCart();}
+const products=[
+{id:1,n:"Strawberry Croissant",c:"food",m:"buttery · sweet · fresh",p:22000,i:"https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=700&q=85",t:"BEST SELLER"},
+{id:2,n:"Pink Berry Drink",c:"drink",m:"fresh · creamy · pretty",p:18000,i:"https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=700&q=85",t:"NEW"},
+{id:3,n:"Cute Desk Decor",c:"aesthetic",m:"korean style · cute",p:35000,i:"https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=700&q=85",t:"AESTHETIC"},
+{id:4,n:"Sweet Donut Box",c:"food",m:"soft · fluffy · 6 pcs",p:28000,i:"https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=700&q=85",t:"FAVORITE"},
+{id:5,n:"Mini Gift Set",c:"gift",m:"pretty · ready to gift",p:45000,i:"https://images.unsplash.com/photo-1512909006721-3d6018887383?auto=format&fit=crop&w=700&q=85",t:"GIFT"},
+{id:6,n:"Pastel Cake Slice",c:"food",m:"soft · creamy · indulgent",p:25000,i:"https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=700&q=85",t:"YUMMY"},
+{id:7,n:"Ribbon Hair Clip",c:"aesthetic",m:"korean style · pink",p:19000,i:"https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=700&q=85",t:"CUTE"},
+{id:8,n:"Iced Coffee",c:"drink",m:"smooth · chilled · cozy",p:20000,i:"https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=700&q=85",t:"COZY"}];
+let cart=[];
+const money=n=>new Intl.NumberFormat("id-ID",{style:"currency",currency:"IDR",maximumFractionDigits:0}).format(n);
+const productsEl=document.getElementById("products"),empty=document.getElementById("empty");
+function render(list=products){productsEl.innerHTML=list.map(p=>`<article class="card"><div class="card-img"><img loading="lazy" src="${p.i}" alt="${p.n}"><span class="tag">${p.t}</span><button class="fav">♡</button></div><div class="card-info"><h3>${p.n}</h3><div class="meta">${p.m}</div><div class="bottom"><span class="price">${money(p.p)}</span><button class="add" onclick="add(${p.id})">+</button></div></div></article>`).join("");empty.style.display=list.length?"none":"block"}
+function add(id){cart.push(products.find(p=>p.id===id));updateCart();openCart()}
+function remove(i){cart.splice(i,1);updateCart()}
+function updateCart(){document.getElementById("count").textContent=cart.length;const box=document.getElementById("cartItems");box.innerHTML=cart.length?cart.map((p,i)=>`<div class="cart-row"><img src="${p.i}" alt=""><div style="flex:1"><h4>${p.n}</h4><p>${money(p.p)}</p><button class="remove" onclick="remove(${i})">hapus</button></div></div>`).join(""):`<p class="cart-empty">Keranjangmu masih kosong ♡</p>`;const total=cart.reduce((s,p)=>s+p.p,0);document.getElementById("total").textContent=money(total);document.getElementById("checkout").href="https://wa.me/62895393044401?text="+encodeURIComponent("Halo kak aku mau pesan "+(cart.length?cart.map(p=>p.n).join(", "):"produk")+" ya;")}
+function openCart(){document.getElementById("drawer").classList.add("open");document.getElementById("overlay").classList.add("show")}
+function closeCart(){document.getElementById("drawer").classList.remove("open");document.getElementById("overlay").classList.remove("show")}
+document.getElementById("cartOpen").onclick=openCart;document.getElementById("cartClose").onclick=closeCart;document.getElementById("overlay").onclick=closeCart;
+document.getElementById("searchOpen").onclick=()=>{document.getElementById("searchBox").classList.toggle("open");document.getElementById("search").focus()};
+document.getElementById("searchClose").onclick=()=>document.getElementById("searchBox").classList.remove("open");
+document.getElementById("search").oninput=e=>{const q=e.target.value.toLowerCase();render(products.filter(p=>(p.n+" "+p.m).toLowerCase().includes(q)))};
+document.querySelectorAll(".category").forEach(b=>b.onclick=()=>{document.querySelectorAll(".category").forEach(x=>x.classList.remove("active"));b.classList.add("active");render(b.dataset.filter==="all"?products:products.filter(p=>p.c===b.dataset.filter))});
+document.getElementById("lang").onchange=e=>{document.getElementById("search").placeholder=e.target.value==="en"?"Search food or aesthetic items...":"Cari makanan atau barang aesthetic..."};
+document.getElementById("news").onsubmit=e=>{e.preventDefault();alert("Thank you ♡ Welcome to HeyNitara!")};
+render();

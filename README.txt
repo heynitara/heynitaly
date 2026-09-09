@@ -1,0 +1,1 @@
+HeyNitara GitHub Pages revision: favicon.svg added and linked from index.html. Keep all files in the same folder.
